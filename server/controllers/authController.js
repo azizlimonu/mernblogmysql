@@ -1,7 +1,9 @@
 import { db } from "../db.js";
 import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken";
+import jwt from 'jsonwebtoken';
+import dotenv from 'dotenv';
 
+dotenv.config();
 // REGISTER
 export const register = (req, res) => {
   // CHECK EXISTING USER
@@ -50,8 +52,19 @@ export const login = (req, res) => {
     if (!isPasswordCorrect)
       return res.status(400).json("Incorrect Credentials!");
 
+    // Send user info that ID's them
+    const token = jwt.sign(
+      { id: data[0].id },
+      process.env.JWT_KEY,
+      { expiresIn: "7d" }
+    );
+
     // Remove password from response
     const { password, ...other } = data[0];
+
+    res.cookie("access_token", token, {
+      httpOnly: true,
+    })
 
     res.status(200).json(other);
   });
@@ -59,5 +72,11 @@ export const login = (req, res) => {
 
 // LOGOUT
 export const logout = (req, res) => {
-  res.send("Logout");
+  res
+    .clearCookie("access_token", {
+      sameSite: "none",
+      secure: true,
+    })
+    .status(200)
+    .json("User has been logged out!");
 };
