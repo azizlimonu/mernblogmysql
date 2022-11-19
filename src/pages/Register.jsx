@@ -1,5 +1,6 @@
+import axios from 'axios';
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Register = () => {
   const [inputs, setInputs] = useState({
@@ -7,15 +8,26 @@ const Register = () => {
     email: "",
     password: "",
   });
+  const [error, setError] = useState(null);
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
-    setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }))
+    setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(inputs);
+    try {
+      await axios.post("http://localhost:8800/auth/register", inputs);
+      navigate('/login');
+    } catch (error) {
+      setError(error);
+      console.log("Register", error);
+    }
   }
+
   return (
     <div className='auth'>
       <h1>Register</h1>
@@ -41,10 +53,14 @@ const Register = () => {
           placeholder='password'
           name='password'
           onChange={handleChange}
+          autoComplete="on"
         />
         <button onClick={handleSubmit}>
           Register
         </button>
+
+        {error && <p style={{ color: "red" }}>{error.response.data}</p>}
+        
         <span>
           Do you have an account?{" "}
           <Link to='/login'>

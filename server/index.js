@@ -3,7 +3,7 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import cookieParser from "cookie-parser";
-import multer from "multer";
+// import multer from "multer";
 
 // Import Routes
 import postsRoutes from './routes/postsRoute.js';
@@ -11,6 +11,13 @@ import authRoutes from './routes/authRoute.js';
 import usersRoutes from './routes/usersRoute.js';
 
 const app = express();
+app.use(cookieParser());
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    credentials: true,
+  })
+);
 dotenv.config();
 
 
