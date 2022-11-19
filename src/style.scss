@@ -1,4 +1,7 @@
-$lightGreen: #b9e7e7;
+// Colour Codes
+$lightblue: #d0e6f0;
+$teal: #008080;
+$charcoal: #36454f;
 
 .app {
   display: flex;
@@ -12,19 +15,18 @@ $lightGreen: #b9e7e7;
       color: inherit;
     }
 
-    //LOGIN & REGISTER
-
+    // Login & Register
     .auth {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       height: 100vh;
-      background-color: $lightGreen;
+      background-color: $lightblue;
 
       h1 {
         font-size: 20px;
-        color: teal;
+        color: $teal;
         margin-bottom: 20px;
       }
 
@@ -35,46 +37,46 @@ $lightGreen: #b9e7e7;
         background-color: white;
         width: 200px;
         gap: 20px;
+      }
 
-        input {
-          padding: 10px;
-          border: none;
-          border-bottom: 1px solid gray;
-        }
+      input {
+        padding: 10px;
+        border: none;
+        border-bottom: 1px solid $charcoal;
+      }
 
-        button {
-          padding: 10px;
-          border: none;
-          background-color: teal;
-          cursor: pointer;
-          color: white;
-        }
+      button {
+        padding: 10px;
+        border: none;
+        background-color: $teal;
+        cursor: pointer;
+        color: white;
+      }
 
-        p {
-          font-size: 12px;
-          color: red;
-          text-align: center;
-        }
+      p {
+        font-size: 12px;
+        text-align: center;
+        color: red;
+      }
 
-        span {
-          font-size: 12px;
-          text-align: center;
-        }
+      span {
+        font-size: 12px;
+        text-align: center;
       }
     }
 
-    //NAVBAR
-
+    // Navbar
     .navbar {
       .container {
-        padding: 10px 0px;
         display: flex;
-        align-items: center;
         justify-content: space-between;
+        align-items: center;
+        padding: 10px 0px;
 
         .logo {
           img {
-            width: 120px;
+            width: 200px;
+            height: 200px;
           }
         }
 
@@ -82,66 +84,71 @@ $lightGreen: #b9e7e7;
           display: flex;
           align-items: center;
           gap: 10px;
+        }
 
-          h6 {
-            font-size: 16px;
-            font-weight: 300;
-          }
+        h6 {
+          font-size: 16px;
+          font-weight: 300;
+        }
 
-          span {
-            cursor: pointer;
-          }
+        span {
+          cursor: pointer;
+        }
 
-          .write {
-            background-color: $lightGreen;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 300;
-            border: 1px solid white;
+        .write {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: 300;
+          background-color: $lightblue;
+          height: 50px;
+          width: 50px;
+          border-radius: 50%;
+          // border is given here so that it won't resize on hover
+          border: 1px solid white;
 
-            &:hover {
-              color: teal;
-              background-color: white;
-              border: 1px solid teal;
-            }
+          &:hover {
+            color: $teal;
+            background-color: white;
+            border: 1px solid $teal;
           }
         }
       }
     }
 
-    //FOOTER
-
+    // Footer
     footer {
-      margin-top: 100px;
-      padding: 20px;
-      background-color: $lightGreen;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      margin-top: 100px;
+      padding: 20px;
+      background-color: $lightblue;
       font-size: 12px;
 
       img {
         height: 50px;
       }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
     }
 
-    //HOME
-
+    // Home
     .home {
       .posts {
-        margin-top: 50px;
         display: flex;
         flex-direction: column;
-        gap: 150px;
+        margin-top: 50px;
+        gap: 100px;
 
         .post {
           display: flex;
           gap: 100px;
 
+          // if post is odd number
           &:nth-child(2n + 1) {
             flex-direction: row-reverse;
           }
@@ -153,26 +160,28 @@ $lightGreen: #b9e7e7;
             &::after {
               content: "";
               width: 100%;
-              height: 100%;
-              background-color: $lightGreen;
+              height: 70%;
               position: absolute;
               top: 20px;
               left: -20px;
+              background-color: $lightblue;
               z-index: -1;
+              border-radius: 10px;
             }
 
             img {
               width: 100%;
-              max-height: 400px;
+              max-height: 70%;
               object-fit: cover;
+              border-radius: 10px;
             }
           }
 
           .content {
-            flex: 3;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            flex: 3;
 
             h1 {
               font-size: 48px;
@@ -185,15 +194,16 @@ $lightGreen: #b9e7e7;
             button {
               width: max-content;
               padding: 10px 20px;
+              margin-top: 10px;
               border: none;
-              cursor: pointer;
               background-color: white;
-              border: 1px solid teal;
-              color: teal;
+              border: 1px solid $lightblue;
+              color: $teal;
+              cursor: pointer;
 
               &:hover {
                 border: 1px solid white;
-                background-color: $lightGreen;
+                background-color: $lightblue;
                 color: black;
               }
             }
@@ -202,22 +212,23 @@ $lightGreen: #b9e7e7;
       }
     }
 
-    //SINGLE
+    // Single
 
     .single {
       display: flex;
       gap: 50px;
 
       .content {
-        flex: 5;
         display: flex;
         flex-direction: column;
         gap: 30px;
+        flex: 5;
 
         img {
           width: 100%;
           height: 300px;
-          object-fit: cover;
+          object-fit: fill;
+          border-radius: 10px;
         }
 
         .user {
@@ -225,6 +236,10 @@ $lightGreen: #b9e7e7;
           align-items: center;
           gap: 10px;
           font-size: 14px;
+
+          p {
+            line-height: 0px;
+          }
 
           img {
             width: 50px;
@@ -236,21 +251,38 @@ $lightGreen: #b9e7e7;
           span {
             font-weight: bold;
           }
-        }
 
-        .edit {
-          display: flex;
-          gap: 5px;
+          .edit {
+            display: flex;
+            gap: 20px;
 
-          img {
-            width: 20px;
-            height: 20px;
-            cursor: pointer;
+            img {
+              width: 30px;
+              height: 30px;
+              cursor: pointer;
+            }
+
+            .edit-inner {
+              &:hover {
+                border: 1px solid white;
+                background-color: $lightblue;
+                color: black;
+              }
+            }
+
+            .delete-inner {
+              &:hover {
+                border: 1px solid white;
+                background-color: $lightblue;
+                color: black;
+              }
+            }
           }
         }
 
+
         h1 {
-          font-size: 42px;
+          font-size: 40px;
           color: #333;
         }
 
@@ -260,10 +292,11 @@ $lightGreen: #b9e7e7;
         }
       }
 
+      // Menu Sub-section
       .menu {
-        flex: 2;
         display: flex;
         flex-direction: column;
+        flex: 2;
         gap: 25px;
 
         h1 {
@@ -280,6 +313,7 @@ $lightGreen: #b9e7e7;
             width: 100%;
             height: 200px;
             object-fit: cover;
+            border-radius: 10px;
           }
 
           h2 {
@@ -289,15 +323,16 @@ $lightGreen: #b9e7e7;
           button {
             width: max-content;
             padding: 7.5px 15px;
+            margin-top: 10px;
             border: none;
-            cursor: pointer;
-            color: teal;
             background-color: white;
-            border: 1px solid teal;
+            border: 1px solid $lightblue;
+            color: $teal;
+            cursor: pointer;
 
             &:hover {
               border: 1px solid white;
-              background-color: $lightGreen;
+              background-color: $lightblue;
               color: black;
             }
           }
@@ -305,28 +340,28 @@ $lightGreen: #b9e7e7;
       }
     }
 
-    //WRITE
+    // Write
 
-    .add {
-      margin-top: 20px;
+    .writePost {
       display: flex;
+      margin-top: 20px;
       gap: 20px;
 
       .content {
-        flex: 5;
         display: flex;
         flex-direction: column;
         gap: 20px;
+        flex: 5;
 
         input {
           padding: 10px;
-          border: 1px solid lightgray;
+          border: 1px solid $lightblue;
         }
 
         .editorContainer {
           height: 300px;
           overflow: scroll;
-          border: 1px solid lightgray;
+          border: 1px solid $lightblue;
 
           .editor {
             height: 100%;
@@ -335,19 +370,20 @@ $lightGreen: #b9e7e7;
         }
       }
 
+      // Side-Menu
       .menu {
-        flex: 2;
         display: flex;
         flex-direction: column;
+        flex: 2;
         gap: 20px;
 
         .item {
-          border: 1px solid lightgray;
-          padding: 10px;
-          flex: 1;
           display: flex;
           flex-direction: column;
           justify-content: space-between;
+          flex: 1;
+          border: 1px solid lightgray;
+          padding: 10px;
           font-size: 12px;
           color: #555;
 
@@ -364,20 +400,33 @@ $lightGreen: #b9e7e7;
             display: flex;
             justify-content: space-between;
 
+            // targets first button
             :first-child {
               cursor: pointer;
-              color: teal;
+              color: $teal;
               background-color: white;
-              border: 1px solid teal;
+              border: 1px solid $lightblue;
               padding: 3px 5px;
+
+              &:hover {
+                color: #555;
+                background-color: $lightblue;
+              }
             }
 
+            // targets last button
             :last-child {
               cursor: pointer;
-              color: white;
-              background-color: teal;
-              border: 1px solid teal;
+              color: #555;
+              background-color: $lightblue;
+              border: 1px solid $lightblue;
               padding: 3px 5px;
+
+              &:hover {
+                color: $teal;
+                background-color: white;
+                border: 1px solid $teal;
+              }
             }
           }
 
@@ -385,7 +434,11 @@ $lightGreen: #b9e7e7;
             display: flex;
             align-items: center;
             gap: 2px;
-            color: teal;
+            color: $teal;
+
+            input {
+              margin-right: 10px;
+            }
           }
         }
       }
